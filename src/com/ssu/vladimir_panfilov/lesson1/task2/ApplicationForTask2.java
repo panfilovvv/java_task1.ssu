@@ -17,8 +17,9 @@ public class ApplicationForTask2 {
         return a * b;
     }
 
-    public double divide(double a, double b) {
-        return a*1.0 / b;
+    public double divide(double a, double b) throws Exception {
+        if (b==0) throw new Exception("You can't divide by zero!");
+        else return a*1.0 / b;
     }
 
     public double substract(double a, double b) {
@@ -46,7 +47,12 @@ public class ApplicationForTask2 {
                 System.out.println(A + " - " + B + " = " + substract(A, B));
                 break;
             case "/":
-                System.out.println(A + " / " + B + " = " + divide(A, B));
+                try {
+                    System.out.println(A + " / " + B + " = " + divide(A, B));
+                }
+                catch (Exception e){
+                    System.err.println(e.getMessage());
+                }
                 break;
             default:
                 System.out.println("Something is wrong with your operation, please try again later!");
